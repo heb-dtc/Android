@@ -1,0 +1,69 @@
+--------------------------------------------------------------
+Remove old rules
+--------------------------------------------------------------
+- check if have some rules already
+	$ sudo ls /etc/udev/rules.d/
+- if yes delete them 
+
+--------------------------------------------------------------
+Create a new file with the rules
+--------------------------------------------------------------
+- create the file	
+	$ sudo touch /etc/udev/rules.d/99-android.rules
+- edit the file
+	$ sudo gedit /etc/udev/rules.d/99-android.rules
+
+- copy and paste the following rules into the file and save it
+
+
+#Acer
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0502", MODE="0666"
+#Dell
+SUBSYSTEM=="usb", SYSFS{idVendor}=="413c", MODE="0666"
+#Foxconn
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0489", MODE="0666"
+#Garmin-Asus
+SUBSYSTEM=="usb", SYSFS{idVendor}=="091E", MODE="0666"
+#Google
+SUBSYSTEM=="usb", SYSFS{idVendor}=="18d1", MODE="0666"
+#HTC
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0bb4", MODE="0666"
+#Huawei
+SUBSYSTEM=="usb", SYSFS{idVendor}=="12d1", MODE="0666"
+#Kyocera
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0482", MODE="0666"
+#LG
+SUBSYSTEM=="usb", SYSFS{idVendor}=="1004", MODE="0666"
+#Motorola
+SUBSYSTEM=="usb", SYSFS{idVendor}=="22b8", MODE="0666"
+#Nvidia
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0955", MODE="0666"
+#Pantech
+SUBSYSTEM=="usb", SYSFS{idVendor}=="10A9", MODE="0666"
+#Samsung
+SUBSYSTEM=="usb", SYSFS{idVendor}=="04e8", MODE="0666"
+#Sharp
+SUBSYSTEM=="usb", SYSFS{idVendor}=="04dd", MODE="0666"
+#Sony Ericsson
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0fce", MODE="0666"
+#ZTE
+SUBSYSTEM=="usb", SYSFS{idVendor}=="19D2", MODE="0666"
+
+--------------------------------------------------------------
+Change file permissions
+--------------------------------------------------------------
+- give new pernission to the file
+	$ sudo chmod a+r /etc/udev/rules.d/99-android.rules
+
+--------------------------------------------------------------
+Restart udev service and adb for the changes to be effective
+--------------------------------------------------------------	
+- type the following commands
+	$ sudo service udev restart
+	$ adb kill-server
+	$ adb start-server
+	
+- now most of the devices should be recognized by adb
+- to try plug a device and type 
+	$ adb devices
+	

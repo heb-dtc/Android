@@ -1,0 +1,195 @@
+------------------------------------------------------------------------------
+Android Project Layout
+------------------------------------------------------------------------------
+bionic				C runtime: libc, libm, libdl, dynamic linker
+bootloader/legacy		Bootloader reference code
+build				Build system
+dalvik				Dalvik virtual machine
+development			High-level development and debugging tools
+frameworks/base			Core Android app framework libraries
+frameworks/policies/base	Framework configuration policies
+hardware/libhardware		Hardware abstraction library
+hardware/ril			Radio interface layer
+kernel				Linux kernel
+prebuilt			Binaries to support Linux and Mac OS builds
+recovery			System recovery environment
+system/bluetooth		Bluetooth tools
+system/core			Minimal bootable environment
+system/extras			Low-level debugging/inspection tools
+system/wlan/ti			TI 1251 WLAN driver and tools
+------------------------------------------------------------------------------
+unlock VM if mouse drag doesn't work
+------------------------------------------------------------------------------
+- long press the menu key of your keyboard!
+(this key is located at the left of the rigth Ctrl key)
+
+------------------------------------------------------------------------------
+Move app (.apk) to the /system/app dir
+------------------------------------------------------------------------------
+
+su
+mount -o remount,rw -t yaffs2 /dev/block/mtdblock4 /system
+busybox cp /sdcard/location/of/application.apk /system/app/
+busybox cp /sdcard/location/of/application2.apk /system/app/
+mount -o remount,ro -t yaffs2 /dev/block/mtdblock4 /system
+sync
+
+------------------------------------------------------------------------------
+check memory usage with adb command
+------------------------------------------------------------------------------
+$ adb shell dumpsys meminfo <pid>
+
+or
+
+$ adb shell dumpsys meminfo com.bla.bla.myapp
+
+------------------------------------------------------------------------------
+Android Input Framework logging with adb command
+------------------------------------------------------------------------------
+- WindowManager state (includes EventHub, InputReader, InputDispatcher)
+$ adb shell dumpsys window
+
+- show input devices
+$ adb shell getevent -option inputfile
+
+option can be:
+p: display basic info
+i: display more info
+l: uses textual labels for all event codes (easier to read)
+t: show timestamps 
+
+inputfile is optional:
+a linux input event file can be specified. Only events related to this device will be displayed.
+example: $ adb shell getevent -option /dev/input/eventX (with X == the file number)
+
+------------------------------------------------------------------------------
+Inject KeyEvent with adb command
+------------------------------------------------------------------------------
+- code == KeyEvent code
+$adb shell input keyevent code
+------------------------------------------------------------------------------
+sign an application as a system app
+------------------------------------------------------------------------------
+
+keys located in /build/target/product/security/ 
+add android:sharedUserId="android.uid.system" in AndroidManifest.xml file.
+
+
+------------------------------------------------------------------------------
+system app location 
+------------------------------------------------------------------------------
+packages/apps/
+
+
+------------------------------------------------------------------------------
+system drawables location 
+------------------------------------------------------------------------------
+frameworks/base/core/res/res/drawable
+
+------------------------------------------------------------------------------
+add an app (just the apk, no source code) to the build img
+------------------------------------------------------------------------------
+- just copy the app in /device/common/app
+
+------------------------------------------------------------------------------
+enable ADB support for generic_x86 running in VM
+------------------------------------------------------------------------------
+- start the Vm
+- check that the network connection is setup as bridged 
+- at the prompt choose to run Android in debug mode
+- type
+	$netcfg
+- the ethernet interface should be down and most likely is not even listed here
+- to turn it up type
+	$netcfg eth0 dhcp
+- this should brings up eth0 and gets dhcp address
+- if an error msg is displayed (like bad file number most likely...), it means that the boot is divided in several steps.
+Thus, type
+	$exit
+- to force the booting process to go further
+- then try again to turn up eth0
+
+- type again
+	$netcfg
+- eth0 should be listed and should have an IP affected to it
+- now to boot Andorid in graphical mode, type
+	$exit
+
+- on the host machine, open a terminal and type
+	$adb connect ip_address_of_eth0
+- the following output should be printed
+	$connected to ip_address_of_eth0:55555
+- the conection is now established
+
+- to access the log of the Android running on the VM, just type
+	$ adb logcat
+
+------------------------------------------------------------------------------
+enable internet access for generic_x86 running in VM 
+(not working yet, need to be worked out...)
+------------------------------------------------------------------------------
+	
+In order to connecto to the outer world we need to:
+1. Define a default gateway:
+route  add default gw 10.1.1.1 dev eth0 # # sets default gateway to the  10.1.1.1 and
+
+2. If we want to use hostnames, for example to be able to use the browser and surf to “myawesomedomain.com” – we need to define DNS servers. 
+
+Now, there is a tricky stuff. Both QEMU (Android Emulator) and VirtualBox know how to fill in the Guest machines  dns properties – but they do it wrong,
+ due to (this is my guess from looking at the  /system/etc/dhcpcd/dhcpcd-hooks/20-dns.conf script) an old prop naming convention.
+
+That is, some addresses are taken from the host’s /etc/resolv.conf – but are populated over the  net.eth0.dnsN (N=1,2,…) properties, while this seems to be an obsolete convention.
+
+Hence, in order to be able to use the internet with hostnames, we need to do the following (using our IP conventions:)
+
+setprop net.dns1  10.1.1.13  # Nubo DNS1
+setprop net.dns2  10.1.1.12 # Nubo DNS2
+setprop net.dns3  8.8.4.4 # Google DNS
+
+------------------------------------------------------------------------------
+Mount a filesystem read-write
+------------------------------------------------------------------------------
+$ adb shell
+$ su
+
+- Replace /dev/block/mtdblock3 & /system with appropriate device path and mount point, as obtained from cat /proc/mounts
+$ mount -o rw,remount -t yaffs2 /dev/block/mtdblock3 /system
+
+------------------------------------------------------------------------------
+Build ANDROID
+------------------------------------------------------------------------------
+
+If error 1:
+ - Could not reserve enough space for object heap
+ - Could not create the Java Virtual Machine. 
+
+In <ANDROID_ROOT>/build/core/definitions.mk on line 1528:
+  $(if $(findstring windows,$(HOST_OS)),,-JXms16M -JXmx2048M)
+
+Change the line to:
+  $(if $(findstring windows,$(HOST_OS)),,-JXms16M -JXmx1024M) \
+
+if error 2:
+ - Could not create the Java Virtual Machine.
+ 
+In <ANDROID_ROOT>/build/tools/releasetools/common.py on line 361:
+  cmd = ["java", "-Xmx2048m", "-jar",
+           os.path.join(OPTIONS.search_path, "framework", "signapk.jar")]
+
+Change the line to:
+  cmd = ["java", "-Xmx1024m", "-jar",
+           os.path.join(OPTIONS.search_path, "framework", "signapk.jar")]
+
+------------------------------------------------------------------------------
+various links to explore
+------------------------------------------------------------------------------
+- http://ronubo.blogspot.com/view/classic
+- http://www.buildroid.org/blog/
+- https://groups.google.com/forum/#!forum/android-x86
+- http://www.aton.com/android-native-development-using-the-android-open-source-project/
+- http://www.androidenea.com/2011/08/example-of-porting-existing-code-to.html
+- http://www.lindusembedded.com/blog/2010/12/10/the-android-build-system/
+- http://blogs.arm.com/software-enablement/498-from-zero-to-boot-porting-android-to-your-arm-platform/
+- http://androidforums.com/android-themes/347967-tutorial-theming-walkthrough-v-1-a.html
+- http://cjix.info/blog/misc/internal-input-event-handling-in-the-linux-kernel-and-the-android-userspace/ (keys handling from kernel to user space)
+- http://andblogs.net
