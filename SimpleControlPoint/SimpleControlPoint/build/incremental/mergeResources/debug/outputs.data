@@ -1,0 +1,28 @@
+# incremental data. DO NOT EDIT.
+# format is <lastModified> <length> <SHA-1> <path>
+# Encoding is UTF-8
+1368802721554 283 3e41a5ce28f519696d59dd76a04b6a7651df9a7a C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\layout\page_browse_local_fragment.xml
+1368800008078 283 3e41a5ce28f519696d59dd76a04b6a7651df9a7a C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\layout\page_fragment.xml
+1368795975913 244 045ff451db7cd8e61285502b8c9bbf7405f2078d C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\menu\phone_folders.xml
+1368795976100 210 c41731f5631a90fa989588ef97e9476fc244b438 C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\values-v11\values.xml
+1368795975913 9397 4a5a9affbb731f195fc18fea78d51be7db7536a2 C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\drawable-hdpi\ic_launcher.png
+1368800008078 884 fd27da3ab9146d6aef57a58043689dc8217ba758 C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\layout\activity_phone_folders.xml
+1368800008078 2842 2915590cad8972d031c7dc3bad767372f1e4a9be C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\drawable-hdpi\ic_drawer.png
+1368795976194 130 90e37035f35f83953c491e73e930b7aea297a472 C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\values-sw720dp-land\values.xml
+1368800008078 8704 ec52a1fc4a6cf010a6d039eca0c07b5cd179773b C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\drawable-xhdpi\Thumbs.db
+1368800009625 188 e659609c33f7899eadf2411bebe57d98d3d40265 C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\drawable-hdpi\drawer_shadow.9.png
+1368802721554 283 3e41a5ce28f519696d59dd76a04b6a7651df9a7a C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\layout\page_settings_fragment.xml
+1368800008000 1056 82c73dd76cb3b5ab7df24bc96dd12c33029ed147 C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\drawable-xhdpi\ic_drawer.png
+1368800008000 593 eaa6719ffa69ae6ffe86906ad7e6765b62730869 C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\layout\drawer_list_item.xml
+1368800008078 6144 a8eaa6ddf11e8d4c0204aca58903cc18aa08cbdf C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\drawable-mdpi\Thumbs.db
+1368800009625 195 1c5077b0c3b821c024b481c164bce56205ee9fd4 C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\drawable-xhdpi\drawer_shadow.9.png
+1368802721554 283 3e41a5ce28f519696d59dd76a04b6a7651df9a7a C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\layout\page_browse_dms_fragment.xml
+1368800008078 2837 9e638c2c25c95c33b197c30fb4993b5e02d9c260 C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\drawable-mdpi\ic_drawer.png
+1368795975913 5237 7761bceaf18ed25cdba5f34bf00a55616d078acf C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\drawable-mdpi\ic_launcher.png
+1368800008078 7680 57ab0d27b0ad1d590839eedd0d90492f60e8b220 C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\drawable-hdpi\Thumbs.db
+1368795976100 224 3bee0d9a6f0efbaf11495ad45fdeb8f71aee62e8 C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\values-v14\values.xml
+1368800008078 1317 711dda759846e0baceac779868a07bd90f0ab427 C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\values\values.xml
+1368800009625 173 680ee1fcb14bb4333e95c5301116a7450fcc3a5f C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\drawable-mdpi\drawer_shadow.9.png
+1368802721554 283 3e41a5ce28f519696d59dd76a04b6a7651df9a7a C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\layout\page_control_dmr_fragment.xml
+1368802721554 283 3e41a5ce28f519696d59dd76a04b6a7651df9a7a C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\layout\page_search_dms_fragment.xml
+1368795975913 14383 82acdd75e3fcc36026109406625edc69d4d7212d C:\Documents and Settings\florent.noel\AndroidStudioProjects\SimpleControlPoint\SimpleControlPoint\build\res\all\debug\drawable-xhdpi\ic_launcher.png
